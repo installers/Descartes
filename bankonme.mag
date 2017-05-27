@@ -105,6 +105,13 @@ wget https://github.com/bitsquare/bitsquare/releases/download/v0.4.9.9.1/Bitsqua
 wget https://github.com/bitsquare/bitsquare/releases/download/v0.4.9.9.1/Bitsquare-64bit-0.4.9.9.1.deb.asc
 #gpg --verify Bitsquare-64bit-0.4.9.9.1.deb.asc Bitsquare-64bit-0.4.9.9.1.deb
 dpkg -i Bitsquare-64bit-0.4.9.9.1.deb
+# Exodus Wallet install
+echo Exodus Wallet install
+wget https://exodusbin.azureedge.net/releases/Exodus-linux-x64-1.25.3.zip
+unzip Exodus-linux-x64-1.25.3.zip
+cd exodus-1.25.3
+./Exodus &
+cd ~
 # BITCOINARMORY source builder for Ubuntu 16.04LTS <a href="http://it.toolbox.com/blogs/php-bsd-me/building-bitcoin-armory-from-source-on-debian-7-wheezy-and-or-ubuntu-1604-59422">Armory source build</a>
 echo Bitcoin Armory dependencies and source code builder
 apt-get install -y pyqt4-dev-tools swig python-qt4 python-dev python-twisted python-psutil python-pip
