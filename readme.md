@@ -14,7 +14,7 @@ I used to program PHP in .mag files.... then I found bash.
 
 To generate a source build of Bitcoin-Core, Namecoin-Core, Litecoin-Core, Dash, Electrum, Exodus, Bytecoin and Armory just copy and paste the following into a bash terminal as one line
 
-$ sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install git -y && git clone https://github.com/bankonmeOS/Babbage.git && cd Babbage && chmod +x bankonme.mag && sudo ./bankonme.mag
+$ sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install git -y && git clone https://github.com/bankonmeOS/Descartes.git && cd Descartes && chmod +x bankonme.mag && sudo ./bankonme.mag
 
 ##########################################
 
