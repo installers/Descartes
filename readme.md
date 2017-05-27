@@ -75,4 +75,4 @@ https://github.com/bankonmeOS/WalletGenerator.net
 
 Have fun out there on the client side.
 
-note: the build will take several hours and your computer will grind for a while. Downloading the blockchains will take between hours, days, and a week. It took me 72 hours to download the Bitcoin blockchain on the last test. In the future allowance of choice of wallet instead of the current walet plethora would be ideal. In the mean time more wallets are being added.
+note: the build will take several hours and your computer will grind for a while. Downloading the blockchains will take between hours, days, and a week. It took 72 hours to download the 120 gig Bitcoin blockchain on the last test. In the future allowance of choice of wallet instead of the current walet plethora would be ideal. In the mean time more wallets are being added.
