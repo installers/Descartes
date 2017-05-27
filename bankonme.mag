@@ -1,0 +1,133 @@
+#/bin/bash
+# BankonmeOS (c) Gregory L. Magnusson MIT license 170110
+# to install see install.md
+# updated 170428 Babbage
+# updated 170515 added Electrum Wallet source build and fixed the hanging install question
+# to do... go GUI on the choice of wallets WARNING current build is approaching 200 gigabytes including the blockchains
+# to do compiz-settings-manager need to export and import the cube settings
+# note... Mate desktop is not important... Ubunutu 16.04LTS might be... Debian variants are as yet untested
+echo you can bankon.me
+echo bankonme.mag developer edition installer for Bitcoin-core, Litecoin-core, Dash-core, Namecoin-core, Zcash, Electrum and BitcoinArmory 
+echo Would you like to some extra useful software? y/n konqueror xfburn hardinfo htop etherape psensor xscreensaver-gl
+read yesorno
+if ["yesorno" = "y" ]; then
+    apt-get install -y konqueror xfburn hardinfo htop etherape psensor xscreensaver-gl
+fi
+echo installing necessary build tools and the uncomplicated firewall
+apt-get install -y ufw wget git build-essential libtool autotools-dev automake autoconf pkg-config libssl-dev libevent-dev bsdmainutils libboost-all-dev libminiupnpc-dev libqt4-dev libprotobuf-dev protobuf-compiler libqrencode-dev libzmq3-dev 
+echo starting the uncomplicated firewall
+ufw enable
+echo installing QT5 dependencies
+apt-get install -y qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-tools libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qtcreator
+echo Bitcoin-core with db-4.8.30 source code builder
+cd ~
+git clone https://github.com/bitcoin/bitcoin.git
+cd bitcoin
+BITCOIN_ROOT=$(pwd)
+BDB_PREFIX="${BITCOIN_ROOT}/db4"
+mkdir -p $BDB_PREFIX
+wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
+echo '12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef  db-4.8.30.NC.tar.gz' | sha256sum -c
+tar -xvzf db-4.8.30.NC.tar.gz
+cd db-4.8.30.NC/build_unix/
+../dist/configure --enable-cxx --disable-shared --with-pic --prefix=$BDB_PREFIX
+make install
+cd $BITCOIN_ROOT
+./autogen.sh
+./configure LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/" --enable-hardening
+make
+make install
+/usr/local/bin/bitcoin-qt &
+echo Dashcoin-Core with db-4.8.30 source code builder
+cd ~
+git clone https://github.com/dashpay/dash.git
+cd dash
+DASHCOIN_ROOT=$(pwd)
+BDB_PREFIX=${DASHCOIN_ROOT}/db4
+mkdir -p $BDB_PREFIX
+wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
+echo '12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef  db-4.8.30.NC.tar.gz' | sha256sum -c
+tar -xvzf db-4.8.30.NC.tar.gz
+cd db-4.8.30.NC/build_unix/
+../dist/configure --enable-cxx --disable-shared --with-pic --prefix=$BDB_PREFIX
+make install
+cd $DASHCOIN_ROOT
+./autogen.sh
+./configure LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/" --enable-hardening
+make
+make install
+/usr/local/bin/dash-qt &
+echo Litecoin-Core with db-4.8.30 source code builder
+cd ~
+git clone https://github.com/litecoin-project/litecoin.git
+cd litecoin
+LITECOIN_ROOT=$(pwd)
+BDB_PREFIX=${LITECOIN_ROOT}/db4
+mkdir -p $BDB_PREFIX
+wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
+echo '12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef  db-4.8.30.NC.tar.gz' | sha256sum -c
+tar -xvzf db-4.8.30.NC.tar.gz
+cd db-4.8.30.NC/build_unix/
+../dist/configure --enable-cxx --disable-shared --with-pic --prefix=$BDB_PREFIX
+make install
+cd $LITECOIN_ROOT
+./autogen.sh
+./configure LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/" --enable-hardening
+make
+make install
+/usr/local/bin/litecoin-qt &
+echo Namecoin-Core with db-4.8.30 source code builder
+cd ~
+git clone https://github.com/namecoin/namecoin-core.git
+cd namecoin-core
+NAMECOIN_ROOT=$(pwd)
+BDB_PREFIX=${NAMECOIN_ROOT}/db4
+mkdir -p $BDB_PREFIX
+wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
+echo '12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef  db-4.8.30.NC.tar.gz' | sha256sum -c
+tar -xvzf db-4.8.30.NC.tar.gz
+cd db-4.8.30.NC/build_unix/
+../dist/configure --enable-cxx --disable-shared --with-pic --prefix=$BDB_PREFIX
+make install
+cd $NAMECOIN_ROOT
+./autogen.sh
+./configure LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/" --enable-hardening
+make
+make install
+/usr/local/bin/namecoin-qt &
+# Bitsquare binary build include for 64 bit Debian / Ubuntu
+echo installing Bitsquare 0.4.9.9.1 as a 64 bit binary
+wget https://github.com/bitsquare/bitsquare/releases/download/v0.4.9.9.1/Bitsquare-64bit-0.4.9.9.1.deb
+wget https://github.com/bitsquare/bitsquare/releases/download/v0.4.9.9.1/Bitsquare-64bit-0.4.9.9.1.deb.asc
+#gpg --verify Bitsquare-64bit-0.4.9.9.1.deb.asc Bitsquare-64bit-0.4.9.9.1.deb
+dpkg -i Bitsquare-64bit-0.4.9.9.1.deb
+# BITCOINARMORY source builder for Ubuntu 16.04LTS <a href="http://it.toolbox.com/blogs/php-bsd-me/building-bitcoin-armory-from-source-on-debian-7-wheezy-and-or-ubuntu-1604-59422">Armory source build</a>
+echo Bitcoin Armory dependencies and source code builder
+apt-get install -y pyqt4-dev-tools swig python-qt4 python-dev python-twisted python-psutil python-pip
+sudo -H pip install zope.interface --upgrade
+cd ~
+git clone git://github.com/etotheipi/BitcoinArmory.git
+cd BitcoinArmory
+make
+make install
+python ArmoryQt.py
+echo Zcashd source builder
+apt-get install -y build-essential pkg-config libc6-dev m4 g++-multilib autoconf libtool ncurses-dev unzip git python python-zmq zlib1g-dev wget bsdmainutils automake
+git clone https://github.com/zcash/zcash.git
+cd zcash/
+./zcutil/fetch-params.sh
+./zcutil/build.sh -j$(nproc)
+mkdir -p ~/.zcash
+echo "addnode=mainnet.z.cash" >~/.zcash/zcash.conf
+echo "rpcuser=username" >>~/.zcash/zcash.conf
+echo "rpcpassword=`head -c 32 /dev/urandom | base64`" >>~/.zcash/zcash.conf
+./src/zcashd
+echo source building Electrum Wallet and copying documentation for offline use
+apt-get install -y python-qt4 python-pip
+wget https://download.electrum.org/2.8.2/Electrum-2.8.2.tar.gz
+tar xvf Electrum-2.8.2.tar.gz
+cd Electrum-2.8.2
+python electrum
+wget -m http://docs.electrum.org/en/latest/
+echo you can bankon.me
+echo DONE see docs.electrum.org for information about cold storage
