@@ -4,7 +4,7 @@
 
 Shortening the name of the install file to bankonme.mag and will continue this policy. Version four updates include adding the Bytecoin and Exodus Wallets. Zcash, Electrum, Litecoin-core, Bitcoin-core, Namecoin-core, Dashcore and Bitsquare are still included. Bitsquare is a decentralized cryptocurrency exchange platform. Electrum is useful for cold storage and offline use. Exodus is a wallet that includes Shapeshift code. Read the documentation a few times. I will be re-reading the documentation myself. (see docs.electrum.org)
 
-I am releasing what may be the first .mag file into the wild. *.mag files are an extension released under the MIT license. *.mag (c) 2011,2012,2013,2014,2015,2016,2017 Gregory L. Magnusson MIT license
+I am releasing what is now the fourth .mag file into the wild. *.mag files are an extension released under the MIT license. *.mag (c) 2011,2012,2013,2014,2015,2016,2017 Gregory L. Magnusson MIT license
 
 I used to program PHP in .mag files.... then I found bash.
 
