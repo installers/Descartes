@@ -101,10 +101,10 @@ wget https://bytecoin.org/static/files/BytecoinWallet-1.1.3.amd64.deb
 dpkg -i BytecoinWallet-1.1.3.amd64.deb
 # Bitsquare binary build include for 64 bit Debian / Ubuntu
 echo installing Bitsquare 0.4.9.9.1 as a 64 bit binary
-wget https://github.com/bitsquare/bitsquare/releases/download/v0.4.9.9.1/Bitsquare-64bit-0.4.9.9.1.deb
-wget https://github.com/bitsquare/bitsquare/releases/download/v0.4.9.9.1/Bitsquare-64bit-0.4.9.9.1.deb.asc
+wget https://github.com/bitsquare/bitsquare/releases/download/v0.4.9.9.3/Bitsquare-64bit-0.4.9.9.3.deb
+wget https://github.com/bitsquare/bitsquare/releases/download/v0.4.9.9.1/Bitsquare-64bit-0.4.9.9.3.deb.asc
 #gpg --verify Bitsquare-64bit-0.4.9.9.1.deb.asc Bitsquare-64bit-0.4.9.9.1.deb
-dpkg -i Bitsquare-64bit-0.4.9.9.1.deb
+dpkg -i Bitsquare-64bit-0.4.9.9.3.deb
 # Exodus Wallet install
 echo Exodus Wallet install
 wget https://exodusbin.azureedge.net/releases/Exodus-linux-x64-1.25.3.zip
