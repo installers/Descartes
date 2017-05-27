@@ -20,9 +20,14 @@ $ sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install git -y 
 
 you can http://bankon.me
 
-Building from these cryptocurrency wallets from source takes a while (hours on an i5). With a test on an i7 laptop expect an instance of Bitcoin-Core and Dashcoin-Core within the hour. Downloading the blockchains takes even longer. By longer I am referring to downloading almost 200 gigabytes which could take hours, days or weeks depending on your computer and network access speeds. I am working on the permissions and am not a fan of blasting this whole thing in as sudo root. A production use banary build script is in the works. This is the developer edition. Subsequent instances of the wallets can be started as a regular user for instance
+Building from these cryptocurrency wallets from source takes a while (hours on an i5). With a test on an i7 laptop expect an instance of Bitcoin-Core and Dashcoin-Core within the hour. Downloading the blockchains takes even longer. By longer I am referring to downloading almost 200 gigabytes which could take hours, days or weeks depending on your computer and network access speeds. The permissions seem adequate installing from source as root produces ownership at 0644 where users can load instances of the wallet from the terminal for exampe $ /usr/local/bin/bitcoin-qt
 
-$ /usr/local/bin/bitcoin-qt &
+Subsequent instances of the wallets can be started as a regular user for instance
+
+$ /usr/local/bin/litecoin-qt &
+
+A production use binary build script is in the works as the "chomsky" project found at https://github.com/bankonmeOS/chomsky 
+This is the developer edition. 
 
 If you have a ton of cryptocurrency you need a computer that is NOT connected to the Internet and create a paper wallet and put that paper in a safe or safe place. Lose the passphrase lose the value. I am proving that as I chase down 3.0 Zcash that I picked up in the early days. Really!!! Web Wallets are not safe for long term storage of any amount you consider to be moderate value. Binary build coming soon. Bitsquare, the decentralized cyrptocurrency exchange has been added as a binary. In the future Bitsquare will be a source build with the developer edition and a binary build with the production edition. Recent experiments have shown that a binary build co-exists effortlessly with a source build on the same hard drive.
 
