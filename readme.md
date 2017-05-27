@@ -29,7 +29,11 @@ $ /usr/local/bin/litecoin-qt &
 A production use binary build script is in the works as the "chomsky" project found at https://github.com/bankonmeOS/chomsky 
 This is the developer edition. 
 
-If you have a ton of cryptocurrency you need a computer that is NOT connected to the Internet and create a paper wallet and put that paper in a safe or safe place. Lose the passphrase lose the value. I am proving that as I chase down 3.0 Zcash that I picked up in the early days. Really!!! Web Wallets are not safe for long term storage of any amount you consider to be moderate value. Binary build coming soon. Bitsquare, the decentralized cyrptocurrency exchange has been added as a binary. In the future Bitsquare will be a source build with the developer edition and a binary build with the production edition. Recent experiments have shown that a binary build co-exists effortlessly with a source build on the same hard drive.
+If you have a ton of cryptocurrency you need a computer that is NOT connected to the Internet and create a paper wallet and put that paper in a safe or safe place. Lose the passphrase lose the value. I am proving that as I chase down 3.0 Zcash that I picked up in the early days. Really!!! Web Wallets are not safe for long term storage of any amount you consider to be more than a moderate value. 
+
+Binary build updates. 
+
+Bitsquare, the decentralized cyrptocurrency exchange has been added as a binary. In the future Bitsquare will be also be a source build of a more pure developer edition. However, the production and development builds do work in Tandem as separate executables. Project Descartes marks the beginning of coupling the binary build with the production edition. Recent experiments have shown that a binary build co-exists effortlessly with a source build on the same, separate or virtual hard disk instance.
 
 Graphics will be added to each of the source built wallets for ease of use....
 
