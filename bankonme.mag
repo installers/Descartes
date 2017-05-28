@@ -122,23 +122,20 @@ cd BitcoinArmory
 make
 make install
 python ArmoryQt.py &
-echo Zcashd source builder
-apt-get install -y build-essential pkg-config libc6-dev m4 g++-multilib autoconf libtool ncurses-dev unzip git python python-zmq zlib1g-dev wget bsdmainutils automake
-git clone https://github.com/zcash/zcash.git
-cd zcash/
-./zcutil/fetch-params.sh
-./zcutil/build.sh -j$(nproc)
-mkdir -p ~/.zcash
-echo "addnode=mainnet.z.cash" >~/.zcash/zcash.conf
-echo "rpcuser=username" >>~/.zcash/zcash.conf
-echo "rpcpassword=`head -c 32 /dev/urandom | base64`" >>~/.zcash/zcash.conf
-./src/zcashd
-echo source building Electrum Wallet and copying documentation for offline use
-apt-get install -y python-qt4 python-pip
-wget https://download.electrum.org/2.8.2/Electrum-2.8.2.tar.gz
-tar xvf Electrum-2.8.2.tar.gz
-cd Electrum-2.8.2
-python electrum
-wget -m http://docs.electrum.org/en/latest/
+echo Would you like to install Zcashd? y/n
+read yesorno
+if ["yesorno" = "y" ]; then
+  echo Zcashd source builder
+  apt-get install -y build-essential pkg-config libc6-dev m4 g++-multilib autoconf libtool ncurses-dev unzip git python python-zmq zlib1g-dev wget bsdmainutils automake
+  git clone https://github.com/zcash/zcash.git
+  cd zcash/
+  ./zcutil/fetch-params.sh
+  ./zcutil/build.sh -j$(nproc)
+  mkdir -p ~/.zcash
+  echo "addnode=mainnet.z.cash" >~/.zcash/zcash.conf
+  echo "rpcuser=username" >>~/.zcash/zcash.conf
+  echo "rpcpassword=`head -c 32 /dev/urandom | base64`" >>~/.zcash/zcash.conf
+  ./src/zcashd &
+fi
 echo you can bankon.me
-echo DONE see docs.electrum.org for information about cold storage
+echo DONE see docs.electrum.org for more useful information about cold storage
